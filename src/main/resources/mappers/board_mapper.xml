@@ -35,10 +35,9 @@
             bt.title,
             bt.content,
             bt.user_id,
+            ut.username,
             bt.create_dt,
-            bt.update_dt,
-
-            ut.username
+            bt.update_dt
         from
             board_tb bt
             join user_tb ut on (bt.user_id = ut.user_id)
@@ -52,13 +51,12 @@
             bt.title,
             bt.content,
             bt.user_id,
+            ut.username,
             bt.create_dt,
-            bt.update_dt,
-
-            ut.username
+            bt.update_dt
         from
             board_tb bt
-            join user_tb ut on (bt.user_id = ut.user_id);
+            join user_tb ut on (bt.user_id = ut.user_id)
         where
             bt.board_id = #{boardId};
     </select>
@@ -69,13 +67,12 @@
             bt.title,
             bt.content,
             bt.user_id,
+            ut.username,
             bt.create_dt,
-            bt.update_dt,
-
-            ut.username
+            bt.update_dt
         from
             board_tb bt
-            join user_tb ut on (bt.user_id = ut.user_id);
+            join user_tb ut on (bt.user_id = ut.user_id)
         where
             bt.title like "%#{keyword}%" or bt.content like "%#{keyword}%"
         order by
@@ -88,13 +85,12 @@
             bt.title,
             bt.content,
             bt.user_id,
+            ut.username,
             bt.create_dt,
-            bt.update_dt,
-
-            ut.username
+            bt.update_dt
         from
             board_tb bt
-            join user_tb ut on (bt.user_id = ut.user_id);
+            join user_tb ut on (bt.user_id = ut.user_id)
         where
             bt.user_id = #{userId}
         order by
