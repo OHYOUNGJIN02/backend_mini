@@ -1,11 +1,10 @@
 package com.korit.backend_mini.controller;
 
-import com.korit.backend_mini.dto.AddBoardReqDto;
-import com.korit.backend_mini.dto.ModifyBoardReqDto;
-import com.korit.backend_mini.dto.RemoveBoardReqDto;
+import com.korit.backend_mini.dto.board.AddBoardReqDto;
+import com.korit.backend_mini.dto.board.ModifyBoardReqDto;
+import com.korit.backend_mini.dto.board.RemoveBoardReqDto;
 import com.korit.backend_mini.security.model.PrincipalUser;
 import com.korit.backend_mini.service.BoardService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

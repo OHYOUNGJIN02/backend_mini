@@ -1,7 +1,10 @@
 package com.korit.backend_mini.service;
 
 import com.korit.backend_mini.dto.*;
-import com.korit.backend_mini.entity.Board;
+import com.korit.backend_mini.dto.board.AddBoardReqDto;
+import com.korit.backend_mini.dto.board.BoardRespDto;
+import com.korit.backend_mini.dto.board.ModifyBoardReqDto;
+import com.korit.backend_mini.dto.board.RemoveBoardReqDto;
 import com.korit.backend_mini.entity.User;
 import com.korit.backend_mini.repository.BoardRepository;
 import com.korit.backend_mini.repository.UserRepository;
@@ -9,7 +12,6 @@ import com.korit.backend_mini.security.model.PrincipalUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

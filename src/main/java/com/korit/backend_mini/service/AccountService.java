@@ -1,8 +1,8 @@
 package com.korit.backend_mini.service;
 
 import com.korit.backend_mini.dto.ApiRespDto;
-import com.korit.backend_mini.dto.ChangePasswordReqDto;
-import com.korit.backend_mini.dto.ChangeUsernameReqDto;
+import com.korit.backend_mini.dto.account.ChangePasswordReqDto;
+import com.korit.backend_mini.dto.account.ChangeUsernameReqDto;
 import com.korit.backend_mini.entity.User;
 import com.korit.backend_mini.repository.UserRepository;
 import com.korit.backend_mini.security.model.PrincipalUser;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserAccountService {
+public class AccountService {
 
     @Autowired
     private UserRepository userRepository;

@@ -111,6 +111,33 @@
         ut.username = #{username};
     </select>
 
+    <select id="getUserList" resultMap="UserResultMap">
+        select
+            ut.user_id,
+            ut.email,
+            ut.password,
+            ut.username,
+            ut.profile_img,
+            ut.create_dt,
+            ut.update_dt,
+
+            urt.user_role_id,
+            urt.user_id as urt_user_id,
+            urt.role_id as urt_role_id,
+            urt.create_dt as urt_create_dt,
+            urt.update_dt as urt_update_dt,
+
+            rt.role_id,
+            rt.role_name,
+            rt.role_name_kor
+        from
+            user_tb ut
+            join user_role_tb urt on (ut.user_id = urt.user_id)
+            join role_tb rt on (urt.role_id = rt.role_id)
+        where
+            urt.role_id = 2 or urt.role_id = 3;
+    </select>
+
     <insert id="addUser" useGeneratedKeys="true" keyProperty="userId">
         insert into
             user_tb

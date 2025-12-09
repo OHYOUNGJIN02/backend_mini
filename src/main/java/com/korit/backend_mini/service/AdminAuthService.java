@@ -13,10 +13,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserAuthService {
+public class AdminAuthService {
 
     @Autowired
     private JwtUtils jwtUtils;
@@ -36,7 +37,7 @@ public class UserAuthService {
         if (foundUser.isPresent()) {
             return new ApiRespDto<>("failed", "이미 존재하는 이메일 입니다.", null);
         }
-        
+
         Optional<User> foundUserByUsername = userRepository.getUserByUsername(signupReqDto.getUsername());
         if (foundUserByUsername.isPresent()) {
             return new ApiRespDto<>("failed", "이미 존재하는 사용자 이름 입니다.", null);
@@ -49,7 +50,7 @@ public class UserAuthService {
 
         UserRole userRole = UserRole.builder()
                 .userId(optionalUser.get().getUserId())
-                .roleId(3)
+                .roleId(1)
                 .build();
 
         int result = userRoleRepository.addUserRole(userRole);
@@ -70,22 +71,13 @@ public class UserAuthService {
             return new ApiRespDto<>("failed", "사용자 정보를 다시 확인해주세요.", null);
         }
 
+        List<UserRole> userRoles = foundUser.get().getUserRoles();
+        if (userRoles.stream().noneMatch(userRole -> userRole.getRoleId() == 1)) {
+            return new ApiRespDto<>("failed", "접근 권한이 없습니다.", null);
+        }
+
         String accessToken = jwtUtils.generateAccessToken(foundUser.get().getUserId().toString());
 
         return new ApiRespDto<>("success", "로그인 성공", accessToken);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
