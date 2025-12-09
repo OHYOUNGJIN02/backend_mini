@@ -70,6 +70,10 @@ public class UserAuthService {
             return new ApiRespDto<>("failed", "사용자 정보를 다시 확인해주세요.", null);
         }
 
+        if (!foundUser.get().isActive()) {
+            return new ApiRespDto<>("failed", "탈퇴처리된 계정입니다.", null);
+        }
+
         String accessToken = jwtUtils.generateAccessToken(foundUser.get().getUserId().toString());
 
         return new ApiRespDto<>("success", "로그인 성공", accessToken);

@@ -28,4 +28,9 @@ public class UserAccountController {
     public ResponseEntity<?> changeUsername(@RequestBody ChangeUsernameReqDto changeUsernameReqDto, @AuthenticationPrincipal PrincipalUser principalUser) {
         return ResponseEntity.ok(userAccountService.changeUsername(changeUsernameReqDto, principalUser));
     }
+
+    @PostMapping("/withdraw")
+    public ResponseEntity<?> withdraw(@AuthenticationPrincipal PrincipalUser principalUser) {
+        return ResponseEntity.ok(userAccountService.withdraw(principalUser));
+    }
 }

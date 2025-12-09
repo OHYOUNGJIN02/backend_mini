@@ -50,4 +50,12 @@ public class UserRepository {
     public List<User> getUserList() {
         return userMapper.getUserList();
     }
+
+    public int withdraw(Integer userId) {
+        return userMapper.withdraw(userId);
+    }
+
+    public void deleteUser() {
+        userMapper.deleteUser();
+    }
 }
