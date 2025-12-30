@@ -74,7 +74,7 @@
             board_tb bt
             join user_tb ut on (bt.user_id = ut.user_id)
         where
-            bt.title like "%#{keyword}%" or bt.content like "%#{keyword}%"
+            bt.title like concat("%", #{keyword}, "%") or bt.content like concat("%", #{keyword}, "%")
         order by
             bt.create_dt desc;
     </select>

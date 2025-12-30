@@ -34,6 +34,7 @@ public class BoardController {
 
     @GetMapping("/search")
     public ResponseEntity<?> getBoardListByKeyword(@RequestParam String keyword) {
+        System.out.println(keyword);
         return ResponseEntity.ok(boardService.getBoardListByKeyword(keyword));
     }
 
